@@ -168,19 +168,4 @@ curl -s -u $ES_USER:$ES_PASS -X PUT "$ES_URL/_index_template/ai-alerts-template"
   }" \
   || echo "Index template may already exist"
 
-SCRIPT_PATH="/scripts/AutommatedMCPCall.py"
-
-if [[-f "$SCRIPT_PATH" ]]; then
-	chmod +x "$SCRIPT_PATH"
-	log "Set executable permissions for $SCRIPT_PATH"
-else
-	echo "Script $SCRIPT_PATH not found"
-fi 
-if [[ -f "$SCRIPT_PATH" && -x "$SCRIPT_PATH" ]]; then
-	log "Running custom script: $SCRIPT_PATH"
-	python"$SCRIPT_PATH"
-else
-	echo "Custom script not found or not executable: $SCRIPT_PATH"
-fi
-
 done
